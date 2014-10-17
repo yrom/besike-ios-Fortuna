@@ -13,13 +13,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var positiveQuotes: [String]!
+    var negativeQuotes: [String]!
+    
+    func loadJSON(path: String) -> AnyObject? {
+        let data = NSData(contentsOfFile: path)
+        assert(data != nil, "Failed to read data from :\(path)")
+        
+        // parse json data
+        var err: NSError?
+        let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.allZeros, error: &err)
+        assert(err == nil, "Error parsing json:\(err)")
+        
+        return json
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        let path = NSBundle.mainBundle().pathForResource("positiveQuotes", ofType: "json")
-        println("positive quotes path: \(path)")
-//        let testPath = NSBundle.mainBundle().pathForResource("test", ofType: "json")
-//        println("test: \(testPath)") // nil
+        let positiveQuotesPath = NSBundle.mainBundle().pathForResource("positiveQuotes", ofType: "json")
+        let negativeQuotesPath = NSBundle.mainBundle().pathForResource("negativeQuotes", ofType: "json")
+        println("positive quotes path: \(positiveQuotesPath)")
+        
+        assert(positiveQuotesPath != nil, "file positiveQuotes.json isn't exists")
+        assert(negativeQuotesPath != nil, "file negativeQuotes.json isn't exists")
+        positiveQuotes = loadJSON(positiveQuotesPath!) as [String]
+        negativeQuotes = loadJSON(negativeQuotesPath!) as [String]
+    
+        assert(positiveQuotes.count > 0, "should load positive quotes")
+        assert(negativeQuotes.count > 0, "should load negative quotes")
         return true
     }
 
