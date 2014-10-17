@@ -21,12 +21,21 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="VI8-ka-uE6" appends="YES" id="slc-uW-Tce"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="quotationTextView" destination="Mkd-t0-sjN" id="Jk6-of-bVf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VI8-ka-uE6">
+                    <connections>
+                        <action selector="rootViewTapped:" destination="vXZ-lx-hvc" id="Hzg-7q-Phk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="74.133333333333326" y="128.74666666666667"/>
         </scene>

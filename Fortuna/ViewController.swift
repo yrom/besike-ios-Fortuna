@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBAction func rootViewTapped(sender: UITapGestureRecognizer) {
+        println("root view tapped!")
+        displayRandomQuote()
+    }
     @IBOutlet weak var quotationTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +22,8 @@ class ViewController: UIViewController {
         println("view: \(self.view)")
         println("view's frame: \(self.view.frame)")
         println("viewDidLoad quotationTextView: \(quotationTextView)")
-        
+        quotationTextView.editable = false
+        quotationTextView.selectable = false
         displayRandomQuote()
     }
     
