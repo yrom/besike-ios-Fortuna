@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let path = NSBundle.mainBundle().pathForResource("positiveQuotes", ofType: "json")
+        println("positive quotes path: \(path)")
+//        let testPath = NSBundle.mainBundle().pathForResource("test", ofType: "json")
+//        println("test: \(testPath)") // nil
         return true
     }
 
