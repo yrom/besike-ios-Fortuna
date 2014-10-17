@@ -10,14 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var quotationTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Hacking in Swift, since iOS" + String(8))
         println("controller: \(self)")
         println("view: \(self.view)")
         println("view's frame: \(self.view.frame)")
+        println("viewDidLoad quotationTextView: \(quotationTextView)")
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        println("awakeFromNib quotationTextView: \(quotationTextView)")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
